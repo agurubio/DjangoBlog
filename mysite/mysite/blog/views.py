@@ -11,3 +11,24 @@ class PostList(generic.ListView):
 class PostDetail(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+class CreatePost(generic.CreateView):
+    model = Post
+    template_name = 'post_form.html'
+    fields = ['title', 'slug', 'author', 'content', 'status']
+    success_url = '/'
+
+class DeletePost(generic.DeleteView):
+    model = Post
+    template_name = 'post_confirm_delete.html'
+    success_url = '/'
+    
+
+class UpdatePost(generic.UpdateView):
+    model = Post
+    template_name = 'post_form.html'
+    success_url = '/'
+    fields = ['title', 'slug', 'content', 'status']
+
+def about_page(request):
+    return render(request, "about.html")

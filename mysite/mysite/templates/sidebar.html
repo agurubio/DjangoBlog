@@ -10,11 +10,23 @@
     <!-- Sidebar Widgets Column -->
     <div class="col-md-4 float-right ">
     <div class="card my-4">
-            <h5 class="card-header">About Us</h5>
+            <h5 class="card-header">Posteos Activos</h5>
         <div class="card-body">
-            <p class="card-text"> This awesome blog is made on the top of our Favourite full stack Framework 'Django', follow up the tutorial to learn how we made it..!</p>
-            <a href="https://djangocentral.com/building-a-blog-application-with-django"
-            class="btn btn-danger">Know more!</a>
+            {% for Post in object_list  %}
+            <p> {{ Post.title }} </p>
+                <p>
+                <a href="{% url 'post_detail' Post.slug %}">Ver </a> 
+                <a href="{% url 'post_edit' Post.slug %}">Editar </a> 
+                <a href="{% url 'post_delete' Post.slug %}">Borrar </a> 
+            </p>
+            {% endfor %}
+            {% if post is FALSE %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <p class="card-text text-muted h6">No se encuentran entradas. </p>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
     </div>
