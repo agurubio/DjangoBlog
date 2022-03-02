@@ -7,7 +7,7 @@
       <div class="card-body">
         <h1>{% block title %} Edición de Post {% endblock title %}</h1>
         <form method="post"> {% csrf_token %}
-          {{form.as_p}}
+          {{ form.as_p | safe }}
           <input type="submit" value="Cargar">
       </form>
       </div>
