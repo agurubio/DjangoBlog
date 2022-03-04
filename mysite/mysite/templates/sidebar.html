@@ -12,15 +12,11 @@
     <div class="card my-4">
             <h5 class="card-header">Posteos Activos</h5>
         <div class="card-body">
-            {% for Post in object_list  %}
-            <p> {{ Post.title }} </p>
-                <p>
-                <a href="{% url 'post_detail' Post.slug %}">Ver </a> 
-                <a href="{% url 'post_edit' Post.slug %}">Editar </a> 
-                <a href="{% url 'post_delete' Post.slug %}">Borrar </a> 
-            </p>
+            {% if object_list %}
+            {% for Post in object_list  %}             
+              <p>  <a href="{% url 'post_detail' Post.slug %}">{{ Post.title }} </a> </p>
             {% endfor %}
-            {% if post is FALSE %}
+            {% else %}
                 <div class="card mb-4">
                     <div class="card-body">
                         <p class="card-text text-muted h6">No se encuentran entradas. </p>

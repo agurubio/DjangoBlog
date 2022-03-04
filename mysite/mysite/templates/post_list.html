@@ -1,0 +1,57 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+
+</style>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 card mb-4  mt-3 left  top">
+            <div class="card-body">
+            {% if object_list%}
+                <table border="1" style="border-collapse: collapse; width: 100%; height: 54px;">
+                <tbody>
+                <tr style="height: 18px;">
+                <td><strong>Post</strong></td>
+                <td><strong>Slug</strong></td>
+                <td><strong>Status</strong></td>
+                <td><strong>Autor</strong></td>
+                <td><strong>Ver</strong></td>
+                <td><strong>Editar</strong></td>
+                <td><strong>Borrar</strong></td>
+                </tr>
+                    {% for Post in object_list  %}
+                    <tr style="height: 18px;">
+                    <td>{{ Post.title }}</td>
+                    <td>{{ Post.slug }}</td>
+                    <td>{% if Post.status %} Published
+                        {% else %} Draft
+                        {% endif %}
+                    </td>
+                    <td>{{ Post.author }}</td>
+                    <td><a href="{% url 'post_detail' Post.slug %}">Ver </a></td>
+                    <td><a href="{% url 'post_edit' Post.slug %}">Editar </a> </td>
+                    <td><a href="{% url 'post_delete' Post.slug %}">Borrar </a> </td>
+                </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+                {% else %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <p class="card-text text-muted h6">No se encuentran entradas. </p>
+                    </div>
+                </div>
+
+            
+            
+
+            {% endif %}
+        </div>
+    </div>
+
+    {% endblock content %}

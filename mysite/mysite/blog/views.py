@@ -32,3 +32,7 @@ class UpdatePost(generic.UpdateView):
 
 def about_page(request):
     return render(request, "about.html")
+
+class ListPost(generic.ListView):
+    queryset = Post.objects.order_by('-created_on')
+    template_name = 'post_list.html'
