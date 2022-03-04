@@ -6,8 +6,8 @@
     <div class="col-md-8 card mb-4  mt-3 left  top">
       <div class="card-body">
         <h1>{% block title %} Edición de Post {% endblock title %}</h1>
-        <form method="post"> {% csrf_token %}
-          {{ form.as_p | safe }}
+        <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+          {{ form.as_p  }}
           <input type="submit" value="Cargar">
       </form>
       </div>

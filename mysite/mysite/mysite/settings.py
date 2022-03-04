@@ -137,4 +137,15 @@ SUMMERNOTE_CONFIG = {
 
     # Require users to be authenticated for uploading attachments.
     'attachment_require_authentication': True,
+    
+    # Set `upload_to` function for attachments
+    'attachment_upload_to': os.path.join(BASE_DIR, 'media/images')
+
+ 
+# test_func in summernote upload view. (Allow upload images only when user passes the test)
+# https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.mixins.UserPassesTestMixin"""
+#    def example_test_func(request):
+#        return request.user.groups.filter(name='group_name').exists()
+#
+#    'test_func_upload_view': example_test_func,
 }
