@@ -13,8 +13,8 @@ class Inbox(generic.ListView):
     template_name = 'inbox.html'
 
 class SentBox(generic.ListView):
-    pass
-    #queryset =  Message.objects.filter(sender = User.get_username)
+    queryset =  Message.objects.all
+    template_name = 'sentbox.html'
 
 class NewMessage(generic.CreateView):
     model = Message

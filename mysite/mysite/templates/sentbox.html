@@ -3,14 +3,14 @@
 
 <div class="container">
   <div class="row">
-    <!-- Inbox messages Column -->
+    <!-- Sent Messages Column -->
     <div class="col-md-8 mt-3 left">
       {% if object_list %}
       {% for message in object_list %}
       <div class="card mb-4">
           <div class="card-body">
               <h2 class="card-title">{{ message.msg_title }}</h2>
-              <p class="card-text text-muted h6"> De: {{ message.sender }} | Fecha envio: {{ message.created_at}} </p>
+              <p class="card-text text-muted h6">Para: {{ message.reciever }} | Fecha envio: {{ message.created_at}} </p>
               <p class="card-text">{{message.msg_content |safe }}</p>
           </div>
       </div>
