@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-8 mt-3 left">
+      {% if object_list %}
+      {% for message in object_list %}
+      <div class="card mb-4">
+          <div class="card-body">
+              <h2 class="card-title">{{ message.msg_title }}</h2>
+              <p class="card-text text-muted h6">{{ message.sender }} | {{ message.created_at}} </p>
+              <p class="card-text">{{message.msg_content |safe }}</p>
+          </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="card mb-4">
+          <div class="card-body">
+              <h2 class="card-title"> No hay ningun mensaje</h2>
+              <p class="card-text text-muted h6">No se encuentran mensajes. </p>
+          </div>
+      </div>
+      {% endif %}
+  </div>
+  </div>
+</div>
+
+{% endblock content %}

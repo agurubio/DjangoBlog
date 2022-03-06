@@ -9,7 +9,6 @@ class PostForm(forms.Form):
     slug = forms.SlugField(max_length=200, unique=True)
     author = forms.ForeignKey(User, on_delete= forms.CASCADE,related_name='blog_posts')
     updated_on = forms.DateTimeField(auto_now= True)
-    #content = forms.TextField()
     image = forms.ImageField()
     content = SummernoteTextFormField()
     created_on = forms.DateTimeField(auto_now_add=True)

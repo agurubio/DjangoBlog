@@ -9,7 +9,7 @@
         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
         <p class="card-text ">{{ object.content | safe }}</p>
         {% if object.image %}
-        <p><img src={{object.image.url}} alt="Smiley face" width="250" height="250"> </p>
+        <p><img src={{object.image.url}} alt="Post Image" style="max-width: 250px; max-height: 250px"> </p>
         {% endif %}
         <a href="{% url 'post_edit' post.slug %}" class="btn btn-primary">Editar &rarr;</a>
         <a href="{% url 'post_delete' post.slug %}" class="btn btn-primary">Delete &rarr;</a>

@@ -41,6 +41,9 @@
                     <h2 class="card-title">{{ post.title }}</h2>
                     <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
                     <p class="card-text">{{post.content|safe|slice:":200" }}</p>
+                    {% if post.image %}
+                    <p><img src={{post.image.url}} alt="Post Image" style="max-width: 250px; max-height: 250px"> </p>
+                    {% endif %}
                     <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Leer &rarr;</a>
                 </div>
             </div>
