@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'django_summernote',
     'chat',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,9 @@ SUMMERNOTE_CONFIG = {
         ],
 
 }
+
+LOGIN_URL = '/accounts/login'
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

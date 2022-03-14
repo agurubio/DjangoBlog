@@ -20,9 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('summernote/', include('django_summernote.urls')),
+    path('accounts/', include('login.urls')),
     path('', include('blog.urls')),
     path('chat/', include('chat.urls')),
+    
 ]
 
 if settings.DEBUG:

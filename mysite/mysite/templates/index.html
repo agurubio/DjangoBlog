@@ -34,7 +34,6 @@
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8 mt-3 left">
-            {% if object_list %}
             {% for post in post_list %}
             <div class="card mb-4">
                 <div class="card-body">
@@ -47,15 +46,14 @@
                     <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Leer &rarr;</a>
                 </div>
             </div>
-            {% endfor %}
-            {% else %}
+            {% empty %}
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title"> No hay ninguna entrada publicada</h2>
                     <p class="card-text text-muted h6">No se encuentran entradas. </p>
                 </div>
             </div>
-            {% endif %}
+            {% endfor %}
         </div>
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>

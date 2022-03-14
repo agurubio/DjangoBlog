@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h4>{% block title %} Editar Perfil {% endblock title %}</h4>
+        <p>Usuario: {{user.get_username}} </p>
+        <p>Password: <a href="{% url 'password_change' %}">Cambiar </a> </p>
+        <p>Avatar: 
+          {% if user.avatar.image %}
+            <img style="height: 100px;" src="{{user.avatar.image.url}}" alt="avatar">
+        {% else %}
+          <a href="{% url 'add_avatar' %}">Agregar </a> </p>
+          {% endif %}  
+        <form action="" method="post">{% csrf_token %}
+          <table>
+          {{ form.as_table }}
+          </table>
+          <input type="submit" value="Actualizar">       
+        </form> 
+       <p> <a href="{% url 'home' %}" class="btn btn-primary">Volver &rarr;</a></p>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+{% endblock content %}

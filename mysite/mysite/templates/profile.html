@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h4>{% block title %} Ver Perfil {% endblock title %}</h4>
+        <p> {{user.username | safe}} </p>
+        <p> {{user.first_name | safe}} </p>
+        <p> {{user.last_name | safe}} </p>
+        <p> {{user.email | safe}} </p>
+        <p> {{usuario.descripcion | safe}} </p>
+        <p> {{usuario.web_link | safe}} </p>
+        {% if user.avatar.image %}
+        <p>  <img style="height: 100px;" src="{{user.avatar.image.url}}" alt="avatar">
+            {% endif %}</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Volver &rarr;</a>  
+      </div>
+        
+    </div>
+    
+  </div>
+</div>
+
+{% endblock content %}

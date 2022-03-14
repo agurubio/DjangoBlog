@@ -4,25 +4,28 @@
 <div class="container">
   <div class="row">
     <!-- Inbox messages Column -->
-    <div class="col-md-8 mt-3 left">
-      {% if object_list %}
-      {% for message in object_list %}
-      <div class="card mb-4">
-          <div class="card-body">
+    <div class="col-md-8 mt-3 left">   
+
+    {% for message in object_list %}
+          {% if  request.user == message.reciever %}
+          <div class="card mb-4">
+          <div class="card-body">   
               <h2 class="card-title">{{ message.msg_title }}</h2>
-              <p class="card-text text-muted h6"> De: {{ message.sender }} | Fecha envio: {{ message.created_at}} </p>
+              <p class="card-text text-muted h6"> De: {{ message.sender }} | Para: {{message.reciever}} | Fecha envio: {{ message.created_at}} </p>
               <p class="card-text">{{message.msg_content |safe }}</p>
           </div>
-      </div>
-      {% endfor %}
-      {% else %}
+          </div>
+          {% endif %}
+      
+      {% empty %}
       <div class="card mb-4">
           <div class="card-body">
               <h2 class="card-title"> No hay ningun mensaje</h2>
               <p class="card-text text-muted h6">No se encuentran mensajes. </p>
           </div>
       </div>
-      {% endif %}
+    {% endfor %}
+    <a href="{% url 'home' %}" class="btn btn-primary">Volver &rarr;</a>
   </div>
   </div>
 </div>
